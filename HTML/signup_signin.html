@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/app.css">
+</head>
+
+<body>
+    <div class="fixed bg-black bg-opacity-60 inset-0">
+        <div class="container flex items-start justify-end">
+            <!-- Log in -->
+            <div class="hidden bg-white max-w-[450px] rounded-lg w-full mt-24 p-6">
+                <h6 class="text-black text-lg uppercase font-bold">Login</h6>
+
+                <form class="modal-form mt-2.5">
+                    <div class="input-group">
+                        <label class="text-[12px] text-black font-bold">Email</label>
+                        <div class="mt-1">
+                            <input
+                                class="form-control w-full focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[15px] placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                type="email" placeholder="Please enter email">
+                            <p style="display: none;" class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                Por favor ingresa un nombre válido
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="input-group mt-4">
+                        <label class="text-[12px] text-black font-bold">Password</label>
+                        <div class="mt-1">
+                            <input
+                                class="form-control w-full focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[15px] placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                type="password" placeholder="Full name">
+                            <p style="display: none;" class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                Por favor ingresa un nombre válido
+                            </p>
+                        </div>
+                    </div>
+
+                    <button class="btn-type-1 btn-type-1--brand w-full text-center mt-8">Submit</button>
+                </form>
+
+                <p class="mt-2 text-sm text-black font-normal">
+                    You don't have an account? <a class="text-sm text-black text-opacity-70 font-normal"
+                        href="#">Register here</a>
+                </p>
+            </div>
+
+            <!-- Sign up -->
+            <div class="bg-white max-w-[450px] rounded-lg w-full mt-24 p-6">
+                <h6 class="text-black text-lg uppercase font-bold">Register</h6>
+
+                <form class="modal-form mt-2.5">
+                    <div class="input-group">
+                        <label class="text-[12px] text-black font-bold">Name</label>
+                        <div class="mt-1">
+                            <input
+                                class="form-control w-full focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[15px] placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                type="text" placeholder="Email">
+                            <p style="display: none;" class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                Por favor ingresa un nombre válido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="input-group mt-4">
+                        <label class="text-[12px] text-black font-bold">Email</label>
+                        <div class="mt-1">
+                            <input
+                                class="form-control w-full focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[15px] placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                type="email" placeholder="Email">
+                            <p style="display: none;" class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                Por favor ingresa un nombre válido
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="input-group mt-4">
+                        <label class="text-[12px] text-black font-bold">Password</label>
+                        <div class="mt-1">
+                            <input
+                                class="form-control w-full focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[15px] placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                type="password" placeholder="Password">
+                            <p style="display: none;" class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                Por favor ingresa un nombre válido
+                            </p>
+                        </div>
+                    </div>
+
+                    <button class="btn-type-1 btn-type-1--brand w-full text-center mt-8">Submit</button>
+                </form>
+
+                <p class="mt-2 text-sm text-black font-normal">
+                    If you already have an acoount? <a class="text-sm text-black text-opacity-70 font-normal"
+                        href="#"></a>
+                    Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
