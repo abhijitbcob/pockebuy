@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-    <title>Frontend Mentor | Audiophile e-commerce website</title>
+    <title>Pockebuy e-commerce website</title>
     <link rel="stylesheet" href="./dist/app.css">
 </head>
 
@@ -24,7 +24,7 @@
                     shortly.
                 </p>
 
-                <div class="rounded-lg flex flex-col md:flex-row mt-8">
+                <div class="rounded-lg flex hidden flex-col md:flex-row mt-8">
                     <div class="bg-light-grey p-6 md:max-w-[246px] flex-grow rounded-t md:rounded-r-none md:rounded-l">
                         <div class="grid grid-cols-3 gap-x-4">
                             <img height="50px" width="50px"
@@ -52,7 +52,7 @@
                     </div>
                 </div>
 
-                <a class="btn-type-1 btn-type-1--brand w-full mt-[23px] md:mt-[46px]" href="index.html">back to home</a>
+                <a class="btn-type-1 btn-type-1--brand w-full mt-[23px] md:mt-[46px]" href="/pockebuy">back to home</a>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
             <a href="headphones.html" class="capitalize text-sm text-black text-opacity-50 leading-25">go back</a>
             <div class="mt-6 md:mt-[54px] lg:mt-[38px] flex flex-col xl:flex-row gap-y-8 lg:gap-x-7.5 items-start">
                 <form id="order-form"
-                    class="bg-white w-full lg:max-w-[730px] p-6 md:px-[27.5px] md:py-7.5 lg:px-12 lg:py-[54px] flex-grow rounded-lg"
+                    class="custom-form bg-white w-full lg:max-w-[730px] p-6 md:px-[27.5px] md:py-7.5 lg:px-12 lg:py-[54px] flex-grow rounded-lg"
                     action="#">
                     <h3
                         class="uppercase text-2xl md:text-3xl md:leading-9 tracking-1 md:tracking-1.15 font-bold text-black">
@@ -72,29 +72,41 @@
                     <div class="mt-8 md:mt-[41px]">
                         <span class="uppercase text-brand font-bold text-tiny leading-25 tracking-0.93">billing
                             details</span>
-                        <div class="grid md:grid-cols-2 gap-y-6 gap-x-4 mt-4">
+                        <div class="grid md:grid-cols-2 gap-y-6 gap-x-4 mt-4 items-start">
                             <div class="grid gap-y-[9px]">
                                 <label class="text-black text-xtiny capitalize font-bold tracking-[-0.21px]"
                                     for="fullName">name</label>
                                 <input
-                                    class="focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
-                                    type="text" name="fullName" id="fullName" placeholder="Alexei Ward">
+                                    class="custom-form__input focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                    type="text" name="fullName" id="fullName" placeholder="Alexei Ward" required>
+                                <div style="display: none;"
+                                    class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                    Please type a correct input!
+                                </div>
                             </div>
                             <div class="grid gap-y-[9px]">
                                 <label class="text-black text-xtiny capitalize font-bold tracking-[-0.21px]"
                                     for="email">email
                                     address</label>
                                 <input
-                                    class="focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
-                                    type="email" name="email" id="email" placeholder="alexie@mail.com">
+                                    class="custom-form__input focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                    type="email" name="email" id="email" placeholder="alexie@mail.com" required>
+                                <div style="display: none;"
+                                    class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                    Please type a correct input!
+                                </div>
                             </div>
                             <div class="grid gap-y-[9px]">
                                 <label class="text-black text-xtiny capitalize font-bold tracking-[-0.21px]"
                                     for="phone">phone
                                     number</label>
                                 <input
-                                    class="focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
-                                    type="text" name="phone" id="phone" placeholder="+1 (202) 555-0136">
+                                    class="custom-form__input focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                    type="text" name="phone" id="phone" placeholder="+1 (202) 555-0136" required>
+                                <div style="display: none;"
+                                    class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                    Please type a correct input!
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -102,13 +114,17 @@
                     <div class="mt-8 md:mt-[41px]">
                         <span class="uppercase text-brand font-bold text-tiny leading-25 tracking-0.93">Shipping
                             info</span>
-                        <div class="grid md:grid-cols-2 gap-y-6 gap-x-4 mt-4">
+                        <div class="grid md:grid-cols-2 gap-y-6 gap-x-4 mt-4 items-start">
                             <div class="grid gap-y-[9px] md:col-start-1 md:col-end-3">
                                 <label class="text-black text-xtiny capitalize font-bold tracking-[-0.21px]"
                                     for="address">address</label>
                                 <input
-                                    class="focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
-                                    type="text" name="address" id="address" placeholder="1137 Williams Avenue">
+                                    class="custom-form__input focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                    type="text" name="address" id="address" placeholder="1137 Williams Avenue" required>
+                                <div style="display: none;"
+                                    class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                    Please type a correct input!
+                                </div>
                             </div>
                             <div class="grid gap-y-[9px]">
                                 <label class="text-black text-xtiny capitalize font-bold tracking-[-0.21px]"
@@ -116,15 +132,23 @@
                                     Pin code
                                 </label>
                                 <input
-                                    class="focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
-                                    type="pin-code" name="pin-code" id="pin-code" placeholder="10001">
+                                    class="custom-form__input focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                    type="text" name="pin-code" id="pin-code" placeholder="10001" required>
+                                <div style="display: none;"
+                                    class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                    Please type a correct input!
+                                </div>
                             </div>
                             <div class="grid gap-y-[9px]">
                                 <label class="text-black text-xtiny capitalize font-bold tracking-[-0.21px]"
                                     for="country">Country</label>
                                 <input
-                                    class="focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
-                                    type="text" name="country" id="country" placeholder="United States">
+                                    class="custom-form__input focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 px-6 py-[18px] font-bold placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
+                                    type="text" name="country" id="country" placeholder="United States" required>
+                                <div style="display: none;"
+                                    class="invalid-message text-xs font-normal text-orange mt-1 ">
+                                    Please type a correct input!
+                                </div>
                             </div>
                         </div>
                     </div>

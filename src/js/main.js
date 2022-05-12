@@ -13,18 +13,15 @@ import {
 const header = document.querySelector("header");
 const menuToggler = document.querySelector("#menu-toggler");
 const body = document.querySelector("body");
-const overlay = document.querySelector(".overlay");
 
 if (menuToggler) {
   menuToggler.addEventListener("click", function () {
     if (header.classList.contains("open")) {
       header.classList.remove("open");
       body.classList.add("overflow-y-auto");
-      // overlay.classList.add("z-[-1]");
     } else {
       header.classList.add("open");
       body.classList.add("overflow-y-hidden");
-      // overlay.classList.remove("z-[-1]");
     }
   });
 }
@@ -55,6 +52,17 @@ for (const elem of showBtns) {
     }
   })
 }
+
+// Hidding win
+window.addEventListener("keyup", (e) => {
+  if (e.key === "Escape") {
+    document.querySelectorAll("[data-show-target]").forEach(item => {
+      if (!document.querySelector(item.dataset.showTarget).classList.contains("hidden")) {
+        document.querySelector(item.dataset.showTarget).classList.add("hidden");
+      }
+    })
+  }
+})
 
 for (const elem of hideBtns) {
   elem.addEventListener("click", function () {

@@ -563,10 +563,6 @@ body {
   z-index: 50;
 }
 
-.z-\[-1\] {
-  z-index: -1;
-}
-
 .col-start-1 {
   grid-column-start: 1;
 }
@@ -1453,8 +1449,16 @@ body {
   outline-width: 3px;
 }
 
+.outline-2 {
+  outline-width: 2px;
+}
+
 .outline-offset-\[5px\] {
   outline-offset: 5px;
+}
+
+.outline-offset-4 {
+  outline-offset: 4px;
 }
 
 .outline-\[\#CFCFCF\] {
@@ -1463,6 +1467,14 @@ body {
 
 .outline-brand {
   outline-color: #D87D4A;
+}
+
+.outline-white {
+  outline-color: #fff;
+}
+
+.outline-current {
+  outline-color: currentColor;
 }
 
 .transition-colors {
@@ -1873,6 +1885,10 @@ body {
 }
 
 .focus\:outline-dotted:focus {
+  outline-style: dotted;
+}
+
+.focus-visible\:outline-dotted:focus-visible {
   outline-style: dotted;
 }
 
