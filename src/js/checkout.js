@@ -44,25 +44,99 @@ if (orderSubmitBtn) orderSubmitBtn.addEventListener("click", saveOrderDetails);
 
 // saving form data to DB
 function saveOrderDetails() {
+    submitForm();
+    const isFormValid = document.querySelector("#order-form :invalid") ? false : true;
     let formData = new FormData(document.getElementById("order-form"));
 
-    let data = {
-        name: formData.get("fullName"),
-        email: formData.get("email"),
-        phone: formData.get("phone"),
-        address: formData.get("address"),
-        pin: formData.get("pin-code"),
-        country: formData.get("country"),
-        paymentMethod: formData.get("payment-method"),
+    if (isFormValid) {
+        resetForm(document.querySelector("#order-form"));
+
+        let data = {
+            name: formData.get("fullName"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            address: formData.get("address"),
+            pin: formData.get("pin-code"),
+            country: formData.get("country"),
+            paymentMethod: formData.get("payment-method"),
+        }
+
+        const URL = "/pockebuy/apis/checkout-api.php";
+
+        AJAX(URL, data).then(res => {
+            console.log(res);
+            document.getElementById("order-success-alert").classList.remove("hidden");
+
+        }).catch(err => {
+            console.log("Something went wrong!", err);
+        })
     }
 
-    const URL = "/pockebuy/apis/checkout-api.php";
 
-    AJAX(URL, data).then(res => {
-        console.log(res);
-        document.getElementById("order-success-alert").classList.remove("hidden");
 
-    }).catch(err => {
-        console.log("Something went wrong!", err);
+
+}
+
+
+/**
+ * -----------------------------
+ * Custom form validation
+ * -----------------------------
+ */
+
+// Adding validation to each form
+function submitForm() {
+    const formInputs = document.querySelectorAll(".custom-form__input");
+    formInputs.forEach(input => {
+        let isValid = input.checkValidity();
+        const inputType = input.getAttribute("type");
+        const required = input.hasAttribute("required");
+        const invalidTooltip = input.parentElement.querySelector(".invalid-message");
+        toggleInvalidTooltip(invalidTooltip, isValid);
+
+        if (required) {
+            if (["text", "tel", "email"].includes(inputType)) {
+                input.addEventListener("keyup", (e) => {
+                    isValid = input.checkValidity();
+                    toggleInvalidTooltip(invalidTooltip, isValid);
+                })
+            }
+
+            if (["checkbox", "select"].includes(inputType)) {
+                input.addEventListener("change", (e) => {
+                    if (inputType === "checkbox") {
+                        isValid = input.checkValidity();
+                        toggleInvalidTooltip(invalidTooltip, isValid)
+
+                    } else {
+                        isValid = input.checkValidity();
+                        toggleInvalidTooltip(invalidTooltip, isValid)
+                    }
+                })
+            }
+        }
+    });
+}
+
+
+
+// Toggle Invalid Tooltip's visibility
+function toggleInvalidTooltip(elem, isValid) {
+    if (elem) {
+        if (!isValid) {
+            elem.style.display = "block";
+        } else {
+            elem.style.display = "none";
+        }
+    }
+}
+
+// Reset the form inputs value
+function resetForm(form) {
+    // Clearing all inputs
+    form.reset();
+    // Hiding all invalid message
+    form.querySelectorAll(".invalid-message").forEach(elem => {
+        toggleInvalidTooltip(elem, true);
     })
 }

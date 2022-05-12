@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="#">
-    <title>Audiophile e-commerce</title>
+    <title>Pockebuy e-commerce</title>
     <link rel="stylesheet" href="./dist/app.css">
 </head>
 
