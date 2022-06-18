@@ -43,6 +43,11 @@
     max-width: 70.875rem;
   }
 }
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1440px;
+  }
+}
 
 /* NAVIGATION LINKS */
 .header-nav-link {

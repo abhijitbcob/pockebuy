@@ -1,10 +1,10 @@
 <?php
-    include 'config-db.php';
+include 'config-db.php';
 
-    $product_id = $_GET['id'];
-    $collection = $dbConnection->pockebuy->products;
-    $product_id = (int)$product_id;
-    $product = $collection->findOne(['id'=> $product_id]);
+$product_id = $_GET['id'];
+$collection = $dbConnection->pockebuy->products;
+$product_id = $product_id;
+$product = $collection->findOne(['id' => $product_id]);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
     <title><?php echo $product->name ?></title>
     <link rel="stylesheet" href="./dist/app.css">
 </head>
@@ -36,10 +36,10 @@
                 </picture>
 
                 <div class="md:max-w-[340px] lg:max-w-445 lg:mx-0 lg:text-left">
-                    <?php 
-                        if($product->new == true){
-                            echo "<p class='uppercase text-xs font-normal tracking-widest text-brand mb-4'>new product</p>";
-                        }
+                    <?php
+                    if ($product->new == true) {
+                        echo "<p class='uppercase text-xs font-normal tracking-widest text-brand mb-4'>new product</p>";
+                    }
                     ?>
 
 
@@ -85,16 +85,16 @@
                         box</h3>
                     <ul>
                         <?php
-                            // Checking the size
-                            if(sizeof($product->includes)>0){
-                                foreach($product->includes as $index => $value) { ?>
+                        // Checking the size
+                        if (sizeof($product->includes) > 0) {
+                            foreach ($product->includes as $index => $value) { ?>
                         <li class="text-sm leading-25">
                             <span class="quantity text-brand"> <?php echo $value->quantity ?> x</span>
                             <span class="item text-black text-opacity-50 ml-6"> <?php echo $value->item ?> </span>
                         </li>
                         <?php
-                                }  
                             }
+                        }
                         ?>
                     </ul>
                 </article>
@@ -102,31 +102,32 @@
 
             <!-- PRODUCT GALLERY -->
             <div class="product-gallery-grid mt-[88px] md:mt-[120px] lg:mt-40">
-                <?php  
-                    if(sizeof($product->gallery)>0){
-                        foreach($product->gallery as $value) { ?>
+                <?php
+                if (sizeof($product->gallery) > 0) {
+                    foreach ($product->gallery as $value) { ?>
                 <picture class="product-gallery-item">
                     <source media="(min-width: 1024px)" srcset="<?php echo $value->desktop ?>">
                     <source media="(min-width: 768px)" srcset="<?php echo $value->tablet ?>">
                     <img class="w-full rounded" width="445px" height="280px" src="<?php echo $value->mobile ?>"
                         alt="x99 mark two headphones">
                 </picture>
-                <?php        
-                        }
+                <?php
                     }
+                }
                 ?>
             </div>
 
             <!-- YOU MAY ALSO LIKE -->
+            <?php if (isset($product->others)) { ?>
             <div class="mt-[120px] lg:mt-40">
                 <h3
                     class="uppercase text-center text-xl md:text-3xl font-bold leading-9 tracking-0.86 md:tracking-1.15">
                     you may also like
                 </h3>
                 <div class="grid md:grid-cols-3 gap-y-14 md:gap-x-[11px] lg:gap-x-7.5 mt-10 md:mt-14 lg:mt-16">
-                    <?php  
-                        if(sizeof($product->others)>0){
-                            foreach($product->others as $value) { ?>
+                    <?php
+                        if (sizeof($product->others) > 0) {
+                            foreach ($product->others as $value) { ?>
                     <div class="grid justify-items-center">
                         <picture>
                             <source media="(min-width: 1024px)" srcset="<?php echo $value->image->desktop ?>">
@@ -138,12 +139,15 @@
                         <a class="btn-type-1 btn-type-1--brand mt-8"
                             href="./single-product.php?id=<?php echo $product->id ?>">see product</a>
                     </div>
-                    <?php        
+                    <?php
                             }
                         }
-                    ?>
+                        ?>
                 </div>
             </div>
+
+            <?php } ?>
+
 
             <!-- PRODUCT CATEGORIES -->
             <?php include 'category_block.php' ?>
