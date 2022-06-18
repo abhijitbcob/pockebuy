@@ -51,11 +51,23 @@ $_SESSION["id"] = $product->id;
                                 type="text" placeholder="Name"><br>
                         </div>
                         <div class="pt-3 w-full pr-4">
-                            <label for=""
+                            <label for="category"
                                 class="invalid-message text-xs font-normal text-orange mt-1 pt-3 capitalize">Category:</label><br>
-                            <input type="text" id="fcategory" name="category" value="<?php echo $product->category ?>"
-                                class="form-control w-full focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 mt-3 px-6  py-[15px] placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]"
-                                placeholder="Category"><br>
+
+                            <select id="category" name="category" value="<?php echo $product->category ?>"
+                                class="form-control w-full focus:border-brand caret-brand outline-none rounded-lg border border-light-grey-3 mt-3 px-6  py-[15px] placeholder-black placeholder-opacity-40 text-xs tracking-[-0.25px]">
+                                <option <?php if ($product->category == "headphones") {
+                                            echo 'selected';
+                                        }  ?> value="headphones">Headphones</option>
+                                <option <?php if ($product->category == "speakers") {
+                                            echo 'selected';
+                                        }  ?> value="speakers">
+                                    Speakers</option>
+                                <option <?php if ($product->category == "earphones") {
+                                            echo 'selected';
+                                        }  ?> value="earphones">
+                                    Earphones</option>
+                            </select>
                         </div>
                         <div class="pt-3 w-full ">
                             <label for=""
