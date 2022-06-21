@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -258,8 +262,23 @@
                                 <span id="order-summary-grand-total" class="text-lg text-brand font-bold"></span>
                             </li>
                         </ul>
-                        <button id="order-submit-btn"
-                            class="btn-type-1 btn-type-1--brand w-full text-center mt-8">continue & pay</button>
+                        <button data-loggedIn="<?php
+                                                if (isset($_SESSION['email'])) {
+                                                    echo "true";
+                                                } else {
+                                                    echo "false";
+                                                }
+
+                                                ?>" data-email="
+                                                <?php
+                                                if (isset($_SESSION['email'])) {
+                                                    echo $_SESSION['email'];
+                                                } else {
+                                                    echo "";
+                                                }
+                                                ?>" id="order-submit-btn"
+                            class="btn-type-1 btn-type-1--brand w-full text-center mt-8">continue
+                            & pay</button>
                     </div>
 
                 </div>

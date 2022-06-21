@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Abhijit",
+        "email": "abcd@gmail.com",
+        "password": "",
+        "orders": [
+            {
+                "product_id": "1",
+                "quantity": "1",
+                "delivered": false
+            }
+        ]
+    }
+]
