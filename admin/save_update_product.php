@@ -155,7 +155,7 @@ foreach ($_FILES as $key => $value) {
     }
 }
 
-print_r($updates);
+// print_r($updates);
 
 // die();
 

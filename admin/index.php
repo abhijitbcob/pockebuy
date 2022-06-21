@@ -3,7 +3,6 @@ include "config.php";
 session_start();
 
 if (isset($_SESSION["username"])) {
-    echo 'hi';
     header("Location: {$hostname}/admin/products_list.php");
 }
 ?>

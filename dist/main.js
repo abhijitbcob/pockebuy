@@ -414,7 +414,7 @@ function renderSummary() {
 
     for (const item of cartState.items) {
         html += `
-            <li class="flex justify-between items-center">
+            <li data-id="${item.id}" data-qty="${item.qty}" class="order-item flex justify-between items-center">
                 <div class="grid grid-flow-col gap-x-4">
                     <img height="64px" width="64px"
                         class="rounded-lg col-start-1 col-end-2 row-start-1 row-end-3"
@@ -449,6 +449,13 @@ function saveOrderDetails() {
 
     if (isFormValid) {
         resetForm(document.querySelector("#order-form"));
+        let orders = [];
+        for (const orderItem of document.querySelectorAll(".order-item")) {
+            orders.push({
+                product_id: orderItem.dataset.id,
+                quantity: orderItem.dataset.qty
+            })
+        }
 
         let data = {
             name: formData.get("fullName"),
@@ -458,6 +465,8 @@ function saveOrderDetails() {
             pin: formData.get("pin-code"),
             country: formData.get("country"),
             paymentMethod: formData.get("payment-method"),
+            savedEmail: document.getElementById("order-submit-btn").dataset.email,
+            orders: orders,
         }
 
         const URL = "/pockebuy/apis/checkout-api.php";
@@ -470,10 +479,6 @@ function saveOrderDetails() {
             console.log("Something went wrong!", err);
         })
     }
-
-
-
-
 }
 
 
@@ -539,7 +544,38 @@ function resetForm(form) {
         toggleInvalidTooltip(elem, true);
     })
 }
+;// CONCATENATED MODULE: ./src/js/login_signup.js
+
+
+function loginSignup() {
+    const userRegistrationForm = document.getElementById("user-registration-form");
+
+    if (userRegistrationForm) {
+        userRegistrationForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const formData = new FormData(userRegistrationForm);
+
+            const data = {
+                "name": formData.get("name"),
+                "email": formData.get("email"),
+                "password": formData.get("password")
+            };
+
+            AJAX("/pockebuy/apis/user-register-api.php", data).then(res => {
+                document.getElementById("registration-msg").textContent = res.message;
+                setTimeout(() => {
+                    document.location.reload();
+                }, 2000);
+
+            }).catch(err => {
+                document.getElementById("registration-msg").textContent = err.message;
+            })
+        })
+    }
+}
 ;// CONCATENATED MODULE: ./src/js/main.js
+
+
 
 
 
@@ -630,5 +666,6 @@ hideOverlayOnclick();
 productAddToCartBox();
 // Rendering summary
 renderSummary();
+loginSignup();
 /******/ })()
 ;

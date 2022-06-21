@@ -1,8 +1,9 @@
 <?php
+session_start();
 
-  include 'config-db.php';
-  $collection = $dbConnection->pockebuy->products;
-  $cursor = $collection->find( [ 'category' => "speakers" ] );
+include 'config-db.php';
+$collection = $dbConnection->pockebuy->products;
+$cursor = $collection->find(['category' => "speakers"]);
 
 ?>
 
@@ -27,28 +28,28 @@
     <main class="pb-[120px] lg:pb-40 relative">
         <div class="container">
             <?php
-                
-                  foreach($cursor as $index => $product){
-                    $index = $index+1;
-                    $isEven = $index % 2 === 0 ? true : false;
-                  ?>
+
+      foreach ($cursor as $index => $product) {
+        $index = $index + 1;
+        $isEven = $index % 2 === 0 ? true : false;
+      ?>
             <div
                 class="flex flex-col lg:flex-row justify-between items-center gap-y-8 md:gap-y-[52px] lg:gap-x-20 mt-16 md:mt-[120px] lg:mt-40">
-                <picture class="<?php 
-                        if($isEven === true) {
-                          echo "lg:order-2";
-                        }
-                      ?>">
+                <picture class="<?php
+                          if ($isEven === true) {
+                            echo "lg:order-2";
+                          }
+                          ?>">
                     <source media="(min-width: 1024px)" srcset="<?php echo $product->categoryImage->desktop ?>">
                     <source media="(min-width: 768px)" srcset="<?php echo $product->categoryImage->tablet ?>">
                     <img class="lg:max-w-[540px] w-full rounded" src="<?php echo $product->categoryImage->mobile ?>"
                         alt="xx99 headphone">
                 </picture>
                 <div class="
-                      <?php 
-                        if($isEven === true) {
-                          echo "lg:order-1";
-                        }
+                      <?php
+                      if ($isEven === true) {
+                        echo "lg:order-1";
+                      }
                       ?>
                       max-w-327 md:max-w-573 lg:max-w-445 text-center lg:mx-0 lg:text-left">
                     <h1 class="uppercase text-36 md:text-5xl text-black tracking-wide"><?php echo $product->name ?>
@@ -60,9 +61,9 @@
                         class="btn-type-1 btn-type-1--brand mt-10">see product</a>
                 </div>
             </div>
-            <?php 
-                  }
-              ?>
+            <?php
+      }
+      ?>
 
             <?php include 'category_block.php' ?>
             <?php include 'static_article.php' ?>

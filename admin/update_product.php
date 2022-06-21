@@ -26,7 +26,7 @@ $_SESSION["id"] = $product->id;
 <body>
     <main>
         <div class="container mx-auto pt-11 pb-12">
-            <h2 class="text-xl font-bold uppercase">Details</h2>
+            <h2 class="text-xl font-bold uppercase">Update product</h2>
             <p class="text-orange-400 invalid-message text-xs font-normal text-orange mt-1 pt-6 uppercase">General
                 Details</p>
 

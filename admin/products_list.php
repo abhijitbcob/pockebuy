@@ -19,6 +19,7 @@ $allProducts = $collection->find();
 </head>
 
 <body>
+    <?php include 'header.php'; ?>
     <main class="py-10">
         <div class="container">
             <section>

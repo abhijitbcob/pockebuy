@@ -9,6 +9,8 @@ import {
 import {
   renderSummary
 } from "./checkout";
+import loginSignup from "./login_signup";
+
 
 const header = document.querySelector("header");
 const menuToggler = document.querySelector("#menu-toggler");
@@ -94,3 +96,4 @@ hideOverlayOnclick();
 productAddToCartBox();
 // Rendering summary
 renderSummary();
+loginSignup();
